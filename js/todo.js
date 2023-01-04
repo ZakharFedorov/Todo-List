@@ -1,19 +1,8 @@
-// Získání aktuálního přihlášeného uživatele
-auth.onAuthStateChanged((user) => {
-    if (user) {
-      userid = user.uid;
-    } else {
-        window.location.replace("/");
-        userid = null;
-    }
-});
-
 const addButton = document.getElementById('add');
 const logoutButton = document.getElementById('logout');
 const inputTask = document.getElementById('new-task');
 const unfinishedTasks = document.getElementById('unfinished-tasks');
 const finishedTasks = document.getElementById('finished-tasks');
-let UserLogin = true
 let userid
 
 // Funkce odhlášení z účtu.
@@ -21,6 +10,7 @@ let userid
 function LogOut() {
     window.location.replace("./");
 }
+
 
 // Funkce vytvoří nový to-do element, který bude sestávat z checkboxa (vyřízený/nevyřízený úkol),
 // labela (popis úkolu), inputa, delete Button (tlačítko pro odstranění úkolu)
@@ -63,22 +53,20 @@ function createNewElement(task, finished) {
 // Funkce přidá nový to-do element do html kodu a databazy.
 // Funkce obsahuje ifLoggedUser argument který představuje pravdivost o autorizaci uživatele 
 // a InputedTask argument který představuje text napsaný v input elementu.
-function addTask(ifLoggedUser, InputedTask) {
+function addTask(InputedTask) {
     let listItem
-    if (ifLoggedUser){
-        if (InputedTask !== '') {
-            db.collection("todo-items").add({
-                description: InputedTask,
-                finished: false,
-                uid: userid
-            })
-    
-            listItem = createNewElement(InputedTask, false);
-            unfinishedTasks.appendChild(listItem);
-            bindTaskEvents(listItem, finishTask)
-    
-            inputTask.value = "";
-        }
+    if (InputedTask !== '') {
+        db.collection("todo-items").add({
+            description: InputedTask,
+            finished: false,
+            uid: userid
+        })
+
+        listItem = createNewElement(InputedTask, false);
+        unfinishedTasks.appendChild(listItem);
+        bindTaskEvents(listItem, finishTask)
+
+        inputTask.value = "";
     }
     return listItem.parentElement;
 }
@@ -232,13 +220,23 @@ function generateItems(items){
 
 // Inicializuje některé prvky
 function init(){
+    
+    // Získání aktuálního přihlášeného uživatele
+    // Pokud je uživatel autorizován, id uživatele se zapíše do proměnné userid,
+    // jinak se zobrazí hlavní stránka.
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+          userid = user.uid;
+        } else {
+            window.location.replace("/");
+        }
+    });
 
+    //Inicializuje logoutButton a addButton.
     logoutButton.onclick = LogOut;
-    addButton.addEventListener("click", () => addTask(UserLogin, inputTask.value))
+    addButton.addEventListener("click", () => addTask(inputTask.value))
 
-    if (UserLogin){
-        loadItems()
-    }
+    loadItems()
 }
 
 init()
