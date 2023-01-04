@@ -8,6 +8,10 @@ app.get('/', (req, res) => {
     res.sendFile(`${__dirname}index.html`);
 });
 
+app.get('/json', (req, res) => {
+    res.sendFile(`${__dirname}/json.html`);
+});
+
 app.listen(port, () => {
     console.log('Application listening on port 3333!');
 });
