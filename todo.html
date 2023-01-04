@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список дел</title>
+    <link rel="stylesheet" href="/css/material-icons.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+    <script src="/firebase/firebase.js"></script>
+</head>
+<body>
+<div id="root">
+    
+    <div class="container">
+        <button id="logout">LogOut</button>
+        <h3>ADD Task</h3>
+        <input id="new-task" type="text">
+        <button id="add">ADD</button>
+        <h3>Tusk List</h3>
+        <ul id="unfinished-tasks"></ul>
+        <ul id="finished-tasks"></ul>
+    </div>
+</div>
+<script src="/js/todo.js"></script>
+</body>
+</html>
