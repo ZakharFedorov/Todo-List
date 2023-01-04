@@ -229,8 +229,7 @@ function init(){
         if (user) {
           userid = user.uid;
         } else {
-            UserLogin = false
-          // User is signed out
+            window.location.replace("/login.html");
         }
     });
 
