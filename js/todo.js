@@ -1,3 +1,13 @@
+// Získání aktuálního přihlášeného uživatele
+auth.onAuthStateChanged((user) => {
+    if (user) {
+      userid = user.uid;
+    } else {
+        window.location.replace("/");
+        userid = null;
+    }
+});
+
 const addButton = document.getElementById('add');
 const logoutButton = document.getElementById('logout');
 const inputTask = document.getElementById('new-task');
@@ -11,7 +21,6 @@ let userid
 function LogOut() {
     window.location.replace("./");
 }
-
 
 // Funkce vytvoří nový to-do element, který bude sestávat z checkboxa (vyřízený/nevyřízený úkol),
 // labela (popis úkolu), inputa, delete Button (tlačítko pro odstranění úkolu)
@@ -223,15 +232,6 @@ function generateItems(items){
 
 // Inicializuje některé prvky
 function init(){
-    
-    // Získání aktuálního přihlášeného uživatele
-    auth.onAuthStateChanged((user) => {
-        if (user) {
-          userid = user.uid;
-        } else {
-            window.location.replace("/");
-        }
-    });
 
     logoutButton.onclick = LogOut;
     addButton.addEventListener("click", () => addTask(UserLogin, inputTask.value))
