@@ -64,6 +64,6 @@ A jednoduché ověření uživatelského přistupu.
 
 **Firebase** - NoSQL a real-time hosting databází. K dispozici je API pro šifrování dat
 
-**Firebase Authentication**
+**Firebase Authentication and Firestore Database**
 
 ---
