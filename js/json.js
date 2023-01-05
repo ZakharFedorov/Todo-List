@@ -1,4 +1,4 @@
-function loadItems(){
+function loadJsonItems(){
     db.collection("todo-items").onSnapshot((snapshot) => {
         let items = [];
         snapshot.docs.forEach((doc) => {
@@ -10,7 +10,9 @@ function loadItems(){
             })
         })
         document.getElementById("json").innerHTML = JSON.stringify(items);
-        console.log(items)
+        return items
     })
 }
 loadItems()
+
+module.exports = {loadJsonItems};
