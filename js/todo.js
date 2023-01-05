@@ -8,7 +8,7 @@ let userid
 // Funkce odhlášení z účtu.
 // Přesune na přihlašovací stránku.
 function LogOut() {
-    window.location.replace("./");
+    window.location.replace("/");
 }
 
 
@@ -228,7 +228,7 @@ function init(){
         if (user) {
           userid = user.uid;
         } else {
-            window.location.replace("/");
+            LogOut()
         }
     });
 

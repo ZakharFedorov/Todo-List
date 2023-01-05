@@ -13,6 +13,6 @@ function loadJsonItems(){
         return items
     })
 }
-loadItems()
+loadJsonItems()
 
 module.exports = {loadJsonItems};

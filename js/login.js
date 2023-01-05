@@ -11,7 +11,7 @@ loginButton.addEventListener("click", (e) => {
     auth.signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
       // Signed in 
-      window.location.replace("/todo.html");
+      window.location.replace("/todo");
     })
     .catch((error) => {
       const errorCode = error.code;
