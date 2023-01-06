@@ -61,9 +61,11 @@ A jednoduché ověření uživatelského přistupu.
 ## Použité technologie 
 
 **JavaScript** - Multiplatformní, objektově orientovaný, událostmi řízený skriptovací jazyk
-
+-
 **Firebase** - NoSQL a real-time hosting databází. K dispozici je API pro šifrování dat
 
 **Firebase Authentication and Firestore Database**
+
+**Express.js** - je backendový webový aplikační rámec pro vytváření RESTful API s Node.js
 
 ---
